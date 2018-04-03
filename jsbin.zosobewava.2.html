@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/zosobewava/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="[add your bin description]">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Хеш</title>
+   <script type="text/JavaScript" >
+ </script>
+</head>
+<body>
+  <p>Выполняйте действия последовательно!</p>
+<!-- <form action="">
+    <button onclick="Insert(13)">Добавление элемента 13</button><br><br>
+   // <button onclick="Insert(25)"> Добавление элемента 25</button><br><br>
+   // <button onclick="Insert(33)">Добавление элемента 33</button><br><br>
+   // <button onclick="Output()">Вывод получившегося</button><br><br>
+   // <button onclick="Delete(13)">Удаление элемента 13</button><br><br>
+   // <button onclick="Output()">После удаления...</button><br><br>
+   // <button onclick="Search(4)">Найдем элемент с кодом 4</button><br><br>
+  </form> -->
+  <form action="">
+  <button onclick="Test1()">Тест</button><br><br>
+  </form>
+<script id="jsbin-javascript">
+
+  var arr;
+  arr= new Array(10);
+  function HashFunc(num)
+{
+  return num % arr.length;
+}
+
+function Insert(num)
+{
+  var key=HashFunc(num);
+  var flag=false;
+  if ((arr[key]===undefined)||(arr[key]==null))
+    {
+      arr[key]=num;
+    }
+  else
+    {
+      var i=key;
+      while (i<arr.length)
+        {
+          if ((arr[i]===undefined)||(arr[i]==null))
+            {
+              arr[i]=num;
+              flag=true;
+              break; 
+            }
+          i++;
+        }
+      if(flag==false)
+        {
+          var j=0;
+          while(j<key)
+            {
+              if((arr[j]===undefined)||(arr[j]==null))
+                {
+                  arr[j]=num;
+                }
+              j++;
+            }
+        }
+    }
+}
+
+function Delete(num)
+{
+  var i=0;
+  while(arr[i]!=num)
+    {
+      i++;
+    }
+  arr[i]=null;
+}
+
+function Search(code)
+{
+  if(arr[code]!=null || arr[code]!==undefined)
+    {
+      alert('Элемент с эти кодом = '+arr[code]);
+    }
+}
+
+
+function Output()
+{
+  for(var k=0;k<arr.length;k++)
+    {
+      if((arr[k]!==undefined) && (arr[k]!=null))
+        {
+          alert('Код: '+k+', Номер: '+arr[k]);
+        }
+    }
+  //alert(arr);
+}
+
+function Test1()
+{
+  alert("Добавим элемент 13");
+  Insert(13);
+  Output();
+  alert("Добавим элемент 15");
+  Insert(15);
+  Output();
+  alert("Добавим элемент 3");
+  Insert(3);
+  Output();
+  alert("Добавим элемент 4");
+  Insert(4);
+  Output();
+  alert("Удалим элемент 3");
+  Delete(3);
+  Output();
+  alert("Найдем элемент с кодом 5");
+  Search(5);
+}
+
+
+
+// var arr = new Array(10);
+// Insert(1);
+// Insert(2);
+// Insert(11);
+// console.log(arr);
+// Delete(1,arr);
+// console.log(arr);
+
+</script>
+</body>
+</html>
